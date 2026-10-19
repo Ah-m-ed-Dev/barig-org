@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DonateRouteImport } from './routes/donate'
+import { Route as NewsRouteImport } from './routes/news'
+import { Route as PartnersRouteImport } from './routes/partners'
+import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as PoliciesSlugRouteImport } from './routes/policies.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonateRoute = DonateRouteImport.update({
+  id: '/donate',
+  path: '/donate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsRoute = ProgramsRouteImport.update({
+  id: '/programs',
+  path: '/programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoliciesSlugRoute = PoliciesSlugRouteImport.update({
+  id: '/policies/$slug',
+  path: '/policies/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/news': typeof NewsRoute
+  '/partners': typeof PartnersRoute
+  '/programs': typeof ProgramsRoute
+  '/policies/$slug': typeof PoliciesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/news': typeof NewsRoute
+  '/partners': typeof PartnersRoute
+  '/programs': typeof ProgramsRoute
+  '/policies/$slug': typeof PoliciesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/news': typeof NewsRoute
+  '/partners': typeof PartnersRoute
+  '/programs': typeof ProgramsRoute
+  '/policies/$slug': typeof PoliciesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/donate'
+    | '/news'
+    | '/partners'
+    | '/programs'
+    | '/policies/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/donate'
+    | '/news'
+    | '/partners'
+    | '/programs'
+    | '/policies/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/donate'
+    | '/news'
+    | '/partners'
+    | '/programs'
+    | '/policies/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  DonateRoute: typeof DonateRoute
+  NewsRoute: typeof NewsRoute
+  PartnersRoute: typeof PartnersRoute
+  ProgramsRoute: typeof ProgramsRoute
+  PoliciesSlugRoute: typeof PoliciesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donate': {
+      id: '/donate'
+      path: '/donate'
+      fullPath: '/donate'
+      preLoaderRoute: typeof DonateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs': {
+      id: '/programs'
+      path: '/programs'
+      fullPath: '/programs'
+      preLoaderRoute: typeof ProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/policies/$slug': {
+      id: '/policies/$slug'
+      path: '/policies/$slug'
+      fullPath: '/policies/$slug'
+      preLoaderRoute: typeof PoliciesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  DonateRoute: DonateRoute,
+  NewsRoute: NewsRoute,
+  PartnersRoute: PartnersRoute,
+  ProgramsRoute: ProgramsRoute,
+  PoliciesSlugRoute: PoliciesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
