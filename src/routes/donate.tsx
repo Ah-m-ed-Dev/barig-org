@@ -7,7 +7,7 @@ import { images, programs, testimonials } from "@/lib/data";
 import { PageHero, SectionTitle } from "@/components/site";
 
 export const Route = createFileRoute("/donate")({
-  validateSearch: (s: Record<string, unknown>) => ({ program: typeof s.program === "string" ? s.program : undefined }),
+  validateSearch: (s: Record<string, unknown>): { program?: string } => (typeof s["program"] === "string" ? { program: s["program"] } : {}),
   head: () => ({
     meta: [
       { title: "تبرّع الآن | منظمة بريق" },
@@ -30,7 +30,7 @@ const schema = z.object({
 function Donate() {
   const { program } = Route.useSearch();
   const [type, setType] = useState(program ? "program" : "general");
-  const [target, setTarget] = useState(program ?? programs[0].slug);
+  const [target, setTarget] = useState(program ?? programs[0]!.slug);
   const [amount, setAmount] = useState<number | "other">(100);
   const [other, setOther] = useState("");
   const [currency, setCurrency] = useState("USD");
@@ -44,7 +44,7 @@ function Donate() {
       name: f.get("name"), email: f.get("email"), phone: f.get("phone") || undefined,
       amount: amount === "other" ? Number(other) : amount, agree: f.get("agree") === "on" ? true : false,
     });
-    if (!r.success) return toast.error(r.error.issues[0].message);
+    if (!r.success) { toast.error(r.error.issues[0]?.message ?? "تحقق من البيانات"); return; }
     toast.success("شكراً لكرمك! بوابة الدفع الآمنة قيد التفعيل، وسنتواصل معك لإتمام التبرع.");
     e.currentTarget.reset();
   };
@@ -59,7 +59,7 @@ function Donate() {
           <div>
             <h2 className="mb-3 text-lg text-secondary">١. نوع التبرع</h2>
             <div className="grid grid-cols-3 gap-2">
-              {[["general","تبرع عام"],["program","برنامج معين"],["campaign","حملة"]].map(([v,l]) => <button type="button" key={v} onClick={() => setType(v)} className={chip(type===v)}>{l}</button>)}
+              {[["general","تبرع عام"],["program","برنامج معين"],["campaign","حملة"]].map(([v,l]) => <button type="button" key={v} onClick={() => setType(v as string)} className={chip(type===v)}>{l}</button>)}
             </div>
             {type === "program" && (
               <select value={target} onChange={(e) => setTarget(e.target.value)} className="field mt-3">
@@ -84,7 +84,7 @@ function Donate() {
           <div>
             <h2 className="mb-3 text-lg text-secondary">٣. التكرار</h2>
             <div className="grid grid-cols-3 gap-2">
-              {[["once","مرة واحدة"],["monthly","شهري"],["yearly","سنوي"]].map(([v,l]) => <button type="button" key={v} onClick={() => setFreq(v)} className={chip(freq===v)}>{l}</button>)}
+              {[["once","مرة واحدة"],["monthly","شهري"],["yearly","سنوي"]].map(([v,l]) => <button type="button" key={v} onClick={() => setFreq(v as string)} className={chip(freq===v)}>{l}</button>)}
             </div>
           </div>
           <div>

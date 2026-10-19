@@ -9,7 +9,7 @@ export function SimpleForm({ schema, success, children, submit }: {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget));
     const r = schema.safeParse(data);
-    if (!r.success) return toast.error(r.error.issues[0].message);
+    if (!r.success) { toast.error(r.error.issues[0]?.message ?? "تحقق من البيانات"); return; }
     toast.success(success);
     e.currentTarget.reset();
   };
