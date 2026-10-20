@@ -14,16 +14,686 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      audit_log: {
+        Row: {
+          action: string
+          created_at: string
+          details: Json | null
+          entity: string
+          entity_id: string | null
+          id: number
+          user_email: string | null
+          user_id: string | null
+        }
+        Insert: {
+          action: string
+          created_at?: string
+          details?: Json | null
+          entity: string
+          entity_id?: string | null
+          id?: number
+          user_email?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          action?: string
+          created_at?: string
+          details?: Json | null
+          entity?: string
+          entity_id?: string | null
+          id?: number
+          user_email?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      campaigns: {
+        Row: {
+          created_at: string
+          description: string | null
+          end_date: string | null
+          goal_amount: number
+          id: string
+          image_url: string | null
+          name: string
+          start_date: string | null
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          end_date?: string | null
+          goal_amount?: number
+          id?: string
+          image_url?: string | null
+          name: string
+          start_date?: string | null
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          end_date?: string | null
+          goal_amount?: number
+          id?: string
+          image_url?: string | null
+          name?: string
+          start_date?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
+      donations: {
+        Row: {
+          amount: number
+          campaign_id: string | null
+          country: string | null
+          created_at: string
+          currency: string
+          donor_email: string | null
+          donor_name: string | null
+          donor_phone: string | null
+          frequency: string
+          id: string
+          notes: string | null
+          payment_method: string | null
+          program: string | null
+          ref: number
+          status: string
+          subscription_status: string | null
+        }
+        Insert: {
+          amount: number
+          campaign_id?: string | null
+          country?: string | null
+          created_at?: string
+          currency?: string
+          donor_email?: string | null
+          donor_name?: string | null
+          donor_phone?: string | null
+          frequency?: string
+          id?: string
+          notes?: string | null
+          payment_method?: string | null
+          program?: string | null
+          ref?: number
+          status?: string
+          subscription_status?: string | null
+        }
+        Update: {
+          amount?: number
+          campaign_id?: string | null
+          country?: string | null
+          created_at?: string
+          currency?: string
+          donor_email?: string | null
+          donor_name?: string | null
+          donor_phone?: string | null
+          frequency?: string
+          id?: string
+          notes?: string | null
+          payment_method?: string | null
+          program?: string | null
+          ref?: number
+          status?: string
+          subscription_status?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "donations_campaign_id_fkey"
+            columns: ["campaign_id"]
+            isOneToOne: false
+            referencedRelation: "campaigns"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      gallery_images: {
+        Row: {
+          album: string | null
+          caption: string | null
+          created_at: string
+          id: string
+          sort_order: number
+          url: string
+        }
+        Insert: {
+          album?: string | null
+          caption?: string | null
+          created_at?: string
+          id?: string
+          sort_order?: number
+          url: string
+        }
+        Update: {
+          album?: string | null
+          caption?: string | null
+          created_at?: string
+          id?: string
+          sort_order?: number
+          url?: string
+        }
+        Relationships: []
+      }
+      messages: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          important: boolean
+          message: string
+          name: string
+          phone: string | null
+          reply: string | null
+          status: string
+          subject: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          important?: boolean
+          message: string
+          name: string
+          phone?: string | null
+          reply?: string | null
+          status?: string
+          subject?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          important?: boolean
+          message?: string
+          name?: string
+          phone?: string | null
+          reply?: string | null
+          status?: string
+          subject?: string | null
+        }
+        Relationships: []
+      }
+      news: {
+        Row: {
+          content: string | null
+          created_at: string
+          excerpt: string | null
+          id: string
+          image_url: string | null
+          og_image: string | null
+          program: string | null
+          publish_at: string | null
+          seo_description: string | null
+          seo_keywords: string | null
+          seo_title: string | null
+          slug: string | null
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          content?: string | null
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          image_url?: string | null
+          og_image?: string | null
+          program?: string | null
+          publish_at?: string | null
+          seo_description?: string | null
+          seo_keywords?: string | null
+          seo_title?: string | null
+          slug?: string | null
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          content?: string | null
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          image_url?: string | null
+          og_image?: string | null
+          program?: string | null
+          publish_at?: string | null
+          seo_description?: string | null
+          seo_keywords?: string | null
+          seo_title?: string | null
+          slug?: string | null
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: {
+          created_at: string
+          id: number
+          link: string | null
+          read: boolean
+          title: string
+          type: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          link?: string | null
+          read?: boolean
+          title: string
+          type: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          link?: string | null
+          read?: boolean
+          title?: string
+          type?: string
+        }
+        Relationships: []
+      }
+      partnerships: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string | null
+          name: string
+          notes: string | null
+          organization: string | null
+          phone: string | null
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message?: string | null
+          name: string
+          notes?: string | null
+          organization?: string | null
+          phone?: string | null
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string | null
+          name?: string
+          notes?: string | null
+          organization?: string | null
+          phone?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
+      programs: {
+        Row: {
+          active: boolean
+          activities: string[]
+          created_at: string
+          description: string | null
+          gallery: string[]
+          goals: string[]
+          id: string
+          image_url: string | null
+          results: string[]
+          short: string | null
+          slug: string
+          sort_order: number
+          targets: string[]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          activities?: string[]
+          created_at?: string
+          description?: string | null
+          gallery?: string[]
+          goals?: string[]
+          id?: string
+          image_url?: string | null
+          results?: string[]
+          short?: string | null
+          slug: string
+          sort_order?: number
+          targets?: string[]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          activities?: string[]
+          created_at?: string
+          description?: string | null
+          gallery?: string[]
+          goals?: string[]
+          id?: string
+          image_url?: string | null
+          results?: string[]
+          short?: string | null
+          slug?: string
+          sort_order?: number
+          targets?: string[]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      site_goals: {
+        Row: {
+          created_at: string
+          id: string
+          sort_order: number
+          text: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          sort_order?: number
+          text: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          sort_order?: number
+          text?: string
+        }
+        Relationships: []
+      }
+      site_pages: {
+        Row: {
+          content: Json
+          slug: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          content?: Json
+          slug: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          content?: Json
+          slug?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      site_settings: {
+        Row: {
+          key: string
+          updated_at: string
+          value: Json
+        }
+        Insert: {
+          key: string
+          updated_at?: string
+          value?: Json
+        }
+        Update: {
+          key?: string
+          updated_at?: string
+          value?: Json
+        }
+        Relationships: []
+      }
+      site_values: {
+        Row: {
+          created_at: string
+          id: string
+          sort_order: number
+          text: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          sort_order?: number
+          text: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          sort_order?: number
+          text?: string
+        }
+        Relationships: []
+      }
+      stats: {
+        Row: {
+          created_at: string
+          id: string
+          label: string
+          sort_order: number
+          suffix: string | null
+          value: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          label: string
+          sort_order?: number
+          suffix?: string | null
+          value?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          label?: string
+          sort_order?: number
+          suffix?: string | null
+          value?: number
+        }
+        Relationships: []
+      }
+      team_members: {
+        Row: {
+          bio: string | null
+          created_at: string
+          id: string
+          name: string
+          photo_url: string | null
+          role: string | null
+          sort_order: number
+          visible: boolean
+        }
+        Insert: {
+          bio?: string | null
+          created_at?: string
+          id?: string
+          name: string
+          photo_url?: string | null
+          role?: string | null
+          sort_order?: number
+          visible?: boolean
+        }
+        Update: {
+          bio?: string | null
+          created_at?: string
+          id?: string
+          name?: string
+          photo_url?: string | null
+          role?: string | null
+          sort_order?: number
+          visible?: boolean
+        }
+        Relationships: []
+      }
+      testimonials: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          photo_url: string | null
+          place: string | null
+          program: string | null
+          text: string
+          visible: boolean
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          photo_url?: string | null
+          place?: string | null
+          program?: string | null
+          text: string
+          visible?: boolean
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          photo_url?: string | null
+          place?: string | null
+          program?: string | null
+          text?: string
+          visible?: boolean
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      volunteer_opportunities: {
+        Row: {
+          active: boolean
+          created_at: string
+          date: string | null
+          description: string | null
+          id: string
+          registrations: number
+          requirements: string | null
+          title: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          date?: string | null
+          description?: string | null
+          id?: string
+          registrations?: number
+          requirements?: string | null
+          title: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          date?: string | null
+          description?: string | null
+          id?: string
+          registrations?: number
+          requirements?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
+      volunteers: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string | null
+          name: string
+          notes: string | null
+          phone: string | null
+          specialty: string | null
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message?: string | null
+          name: string
+          notes?: string | null
+          phone?: string | null
+          specialty?: string | null
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string | null
+          name?: string
+          notes?: string | null
+          phone?: string | null
+          specialty?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      can_manage: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      is_staff: { Args: { _user_id: string }; Returns: boolean }
     }
     Enums: {
-      [_ in never]: never
+      app_role:
+        | "super_admin"
+        | "editor"
+        | "donations_manager"
+        | "volunteer_supervisor"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +820,13 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: [
+        "super_admin",
+        "editor",
+        "donations_manager",
+        "volunteer_supervisor",
+      ],
+    },
   },
 } as const
