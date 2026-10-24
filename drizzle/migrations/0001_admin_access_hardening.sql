@@ -1,0 +1,8 @@
+create policy "bariq media public read" on storage.objects for select to anon, authenticated using (bucket_id = 'bariq-media');
+create policy "bariq media editor insert" on storage.objects for insert to authenticated with check (bucket_id = 'bariq-media' and public.can_manage(auth.uid(), 'editor'));
+create policy "bariq media editor update" on storage.objects for update to authenticated using (bucket_id = 'bariq-media' and public.can_manage(auth.uid(), 'editor')) with check (bucket_id = 'bariq-media' and public.can_manage(auth.uid(), 'editor'));
+create policy "bariq media editor delete" on storage.objects for delete to authenticated using (bucket_id = 'bariq-media' and public.can_manage(auth.uid(), 'editor'));
+alter policy "public settings" on public.site_settings using (key in ('general','donations') or public.has_role(auth.uid(),'super_admin'));
+alter policy "staff read notif" on public.notifications using (public.has_role(auth.uid(),'super_admin') or (type='donation' and public.has_role(auth.uid(),'donations_manager')) or (type='volunteer' and public.has_role(auth.uid(),'volunteer_supervisor')));
+alter policy "staff update notif" on public.notifications using (public.has_role(auth.uid(),'super_admin') or (type='donation' and public.has_role(auth.uid(),'donations_manager')) or (type='volunteer' and public.has_role(auth.uid(),'volunteer_supervisor')));
+alter policy "staff delete notif" on public.notifications using (public.has_role(auth.uid(),'super_admin') or (type='donation' and public.has_role(auth.uid(),'donations_manager')) or (type='volunteer' and public.has_role(auth.uid(),'volunteer_supervisor')));
