@@ -1,5 +1,11 @@
 # Bariq administration
 
+## Current scope: administration interfaces only
+- [ ] Arabic administration shell, overview and login presentation.
+- [ ] Interactive frontend screens for all requested administration sections.
+- [ ] Verify navigation, editing, filtering and mobile layout.
+- Backend integration, real account actions, emails and security automation are deferred by the current request.
+
 - [ ] Sign-in, password recovery, role-aware administration shell and overview.
 - [ ] Donations, campaigns and financial exports (manual records only).
 - [ ] News, programs and gallery administration.
