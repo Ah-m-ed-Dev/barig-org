@@ -26,4 +26,4 @@ export const menu = [
  {title:'الإدارة',items:[['donations','التبرعات','donations'],['donations/campaigns','الحملات','campaigns'],['news','الأخبار والأنشطة','news'],['news/gallery','معرض الصور','gallery'],['programs','البرامج','programs'],['messages','الرسائل','messages'],['volunteers','المتطوعون','volunteers'],['partnerships','الشراكات','partnerships']]},
  {title:'محتوى الموقع',items:[['pages/about','من نحن','about'],['pages/policies','السياسات','policies'],['team','فريق العمل','team'],['values-goals','القيم والأهداف','values'],['stats','الإحصاءات','stats'],['testimonials','الشهادات','testimonials']]},
  {title:'النظام',items:[['reports','التقارير','reports'],['users','المستخدمون','users'],['settings','الإعدادات','settings'],['audit-log','سجل التدقيق','audit']]},
-];
+ ] as const;
