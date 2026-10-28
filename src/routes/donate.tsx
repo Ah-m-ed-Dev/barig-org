@@ -43,9 +43,9 @@ type Method = {
 };
 
 const METHODS: Method[] = [
-  { id: "bankak", label: "بنكك (mBOK)", icon: Smartphone, logo: "/banks/bankak.png", currencies: ["SDG"], account: { holder: "منظمة بريق", number: "0000000" } },
-  { id: "fawry", label: "فوري", icon: Smartphone, logo: "/banks/fawry.png", currencies: ["SDG"], account: { holder: "منظمة بريق", number: "00000000" } },
-  { id: "ocash", label: "أوو-كاش (O-Cash)", icon: Smartphone, logo: "/banks/okash.png", currencies: ["SDG"], account: { holder: "منظمة بريق", number: "00000000" } },
+  { id: "bankak", label: "بنك الخرطوم (بنكك) ", icon: Smartphone, logo: "/banks/bankak.png", currencies: ["SDG"], account: { holder: "منظمة بريق", number: "0000000" } },
+  { id: "fawry", label: "بنك فيصل (فوري) ", icon: Smartphone, logo: "/banks/fawry.png", currencies: ["SDG"], account: { holder: "منظمة بريق", number: "00000000" } },
+  { id: "ocash", label: "بنك امدرمان (أو-كاش) ", icon: Smartphone, logo: "/banks/okash.png", currencies: ["SDG"], account: { holder: "منظمة بريق", number: "00000000" } },
   { id: "bank", label: "تحويل بنكي", icon: Landmark, currencies: ["SDG", "USD"], account: { holder: "منظمة بريق", number: "SD00 0000 0000 0000", note: "اسم البنك / الفرع: ..." } },
   { id: "card", label: "بطاقة", icon: CreditCard, currencies: ["USD"], soon: true },
 ];
