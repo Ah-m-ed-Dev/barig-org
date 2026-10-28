@@ -7,7 +7,6 @@ import {
 } from "lucide-react";
 import { images, programs, testimonials } from "@/lib/data";
 import { PageHero, SectionTitle } from "@/components/site";
-import { bankakLogo, fawryLogo, ocashLogo } from "@/lib/bank-logos";
 import { supabase } from "@/integrations/supabase/client"; // عدّل المسار حسب مشروعك
 
 /* ───────────── الإعدادات (عدّلها ببيانات المنظمة الحقيقية) ───────────── */
@@ -44,9 +43,9 @@ type Method = {
 };
 
 const METHODS: Method[] = [
-  { id: "bankak", label: "بنكك (mBOK)", icon: Smartphone, logo: bankakLogo, currencies: ["SDG"], account: { holder: "منظمة بريق", number: "0000000" } },
-  { id: "fawry", label: "فوري", icon: Smartphone, logo: fawryLogo, currencies: ["SDG"], account: { holder: "منظمة بريق", number: "00000000" } },
-  { id: "ocash", label: "أوو-كاش (O-Cash)", icon: Smartphone, logo: ocashLogo, currencies: ["SDG"], account: { holder: "منظمة بريق", number: "00000000" } },
+  { id: "bankak", label: "بنكك (mBOK)", icon: Smartphone, logo: "/banks/bankak.png", currencies: ["SDG"], account: { holder: "منظمة بريق", number: "0000000" } },
+  { id: "fawry", label: "فوري", icon: Smartphone, logo: "/banks/fawry.png", currencies: ["SDG"], account: { holder: "منظمة بريق", number: "00000000" } },
+  { id: "ocash", label: "أوو-كاش (O-Cash)", icon: Smartphone, logo: "/banks/ocash.png", currencies: ["SDG"], account: { holder: "منظمة بريق", number: "00000000" } },
   { id: "bank", label: "تحويل بنكي", icon: Landmark, currencies: ["SDG", "USD"], account: { holder: "منظمة بريق", number: "SD00 0000 0000 0000", note: "اسم البنك / الفرع: ..." } },
   { id: "card", label: "بطاقة", icon: CreditCard, currencies: ["USD"], soon: true },
 ];
