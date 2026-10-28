@@ -206,7 +206,7 @@ function Donate() {
     <>
       <PageHero title="تبرّع الآن" subtitle="كل مساهمة، مهما كانت صغيرة، تضيء حياة أسرة." img={images.hero} />
       <section className="mx-auto grid max-w-7xl gap-10 px-4 py-16 pb-32 lg:grid-cols-[1.4fr_1fr] lg:pb-16">
-        <form id="donate-form" onSubmit={onSubmit} className="space-y-8 rounded-3xl border bg-card p-6 shadow-soft md:p-10">
+        <form id="donate-form" onSubmit={onSubmit} className="min-w-0 space-y-8 rounded-3xl border bg-card p-6 shadow-soft md:p-10">
           {/* ١. المبلغ */}
           <div>
             <h2 className="mb-3 text-lg text-secondary">١. المبلغ</h2>
@@ -275,7 +275,7 @@ function Donate() {
             </div>
 
             {activeMethod.account && (
-              <div className="mt-4 space-y-4 rounded-2xl border border-dashed border-primary bg-background p-5">
+              <div className="mt-4 min-w-0 space-y-4 overflow-hidden rounded-2xl border border-dashed border-primary bg-background p-5">
                 <ol className="list-decimal space-y-1 pr-5 text-sm leading-7">
                   <li>حوّل المبلغ إلى الحساب أدناه.</li>
                   <li>اكتب الرقم المرجعي في ملاحظة التحويل.</li>
@@ -306,7 +306,7 @@ function Donate() {
 
                 <div>
                   <label htmlFor="receipt" className="mb-2 block text-sm font-semibold">صورة إشعار التحويل</label>
-                  <label htmlFor="receipt" className="field flex min-w-0 cursor-pointer items-center gap-2 text-sm text-muted-foreground">
+                  <label htmlFor="receipt" className="field flex w-full min-w-0 max-w-full cursor-pointer items-center gap-2 overflow-hidden text-sm text-muted-foreground">
                     <Upload className="h-4 w-4 shrink-0" />
                     <span dir="auto" title={receipt?.name} className="min-w-0 flex-1 truncate">
                       {receipt ? receipt.name : "اضغط لاختيار صورة أو PDF"}
