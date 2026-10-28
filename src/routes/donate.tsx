@@ -205,7 +205,7 @@ function Donate() {
   return (
     <>
       <PageHero title="تبرّع الآن" subtitle="كل مساهمة، مهما كانت صغيرة، تضيء حياة أسرة." img={images.hero} />
-      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-16 pb-32 lg:grid-cols-[1.4fr_1fr] lg:pb-16">
+      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-16 lg:grid-cols-[1.4fr_1fr]">
         <form id="donate-form" onSubmit={onSubmit} className="min-w-0 space-y-8 rounded-3xl border bg-card p-6 shadow-soft md:p-10">
           {/* ١. المبلغ */}
           <div>
@@ -381,13 +381,6 @@ function Donate() {
           </div>
         </aside>
       </section>
-
-      {/* شريط ثابت للموبايل */}
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t bg-card p-3 shadow-soft lg:hidden">
-        <button form="donate-form" disabled={busy} className="btn btn-primary w-full !py-3">
-          <Lock className="h-4 w-4" />تأكيد التبرع {numericAmount > 0 ? `${fmt(numericAmount)} ${currency}` : ""}
-        </button>
-      </div>
     </>
   );
 }
