@@ -1,4 +1,4 @@
-import devseed from "@/assets/devseed.png";
+import devseed from "@/assets/devseed-stacked.png";
 
 const DEVSEED_URL = "https://devseeda1.vercel.app";
 
