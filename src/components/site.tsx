@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Menu, X, Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin, Heart, Star, Share2 } from "lucide-react";
 import mark from "@/assets/mark.png";
 import { contact } from "@/lib/data";
+import { DevSeedCredit } from "./devseed-credit";
 
 const nav = [
   { to: "/", label: "الرئيسية" },
@@ -98,7 +99,12 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-current/15 py-5 text-center text-xs opacity-70">© {new Date().getFullYear()} منظمة بريق للتنمية والعمل المجتمعي. جميع الحقوق محفوظة.</div>
+      <div className="border-t border-current/15">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-5 text-xs md:flex-row">
+          <p className="opacity-70">© {new Date().getFullYear()} منظمة بريق للتنمية والعمل المجتمعي. جميع الحقوق محفوظة.</p>
+          <DevSeedCredit />
+        </div>
+      </div>
     </footer>
   );
 }
