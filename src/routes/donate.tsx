@@ -36,15 +36,16 @@ type Method = {
   id: string;
   label: string;
   icon: typeof Landmark;
+  logo?: string;
   currencies: Currency[];
   account?: { holder: string; number: string; note?: string };
   soon?: boolean;
 };
 
 const METHODS: Method[] = [
-  { id: "bankak", label: "بنكك (mBOK)", icon: Smartphone, currencies: ["SDG"], account: { holder: "منظمة بريق", number: "0000000" } },
-  { id: "fawry", label: "فوري", icon: Smartphone, currencies: ["SDG"], account: { holder: "منظمة بريق", number: "00000000" } },
-  { id: "cashi", label: "كاشي", icon: Smartphone, currencies: ["SDG"], account: { holder: "منظمة بريق", number: "00000000" } },
+  { id: "bankak", label: "بنكك (mBOK)", icon: Smartphone, logo: "/banks/bankak.png", currencies: ["SDG"], account: { holder: "منظمة بريق", number: "0000000" } },
+  { id: "fawry", label: "فوري", icon: Smartphone, logo: "/banks/fawry.png", currencies: ["SDG"], account: { holder: "منظمة بريق", number: "00000000" } },
+  { id: "ocash", label: "أوو-كاش (O-Cash)", icon: Smartphone, logo: "/banks/ocash.png", currencies: ["SDG"], account: { holder: "منظمة بريق", number: "00000000" } },
   { id: "bank", label: "تحويل بنكي", icon: Landmark, currencies: ["SDG", "USD"], account: { holder: "منظمة بريق", number: "SD00 0000 0000 0000", note: "اسم البنك / الفرع: ..." } },
   { id: "card", label: "بطاقة", icon: CreditCard, currencies: ["USD"], soon: true },
 ];
@@ -264,7 +265,10 @@ function Donate() {
                     onClick={() => setMethod(m.id)}
                     className={`${chip(method === m.id, m.soon)} flex flex-col items-center gap-1`}
                   >
-                    <Icon className="h-5 w-5" />{m.label}{m.soon && <span className="text-xs font-normal">قريباً</span>}
+                    {m.logo
+                      ? <img src={m.logo} alt="" loading="lazy" className="h-9 w-auto rounded-md object-contain" />
+                      : <Icon className="h-9 w-9 p-1.5" />}
+                    {m.label}{m.soon && <span className="text-xs font-normal">قريباً</span>}
                   </button>
                 );
               })}
